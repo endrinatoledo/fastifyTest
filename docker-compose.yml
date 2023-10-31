@@ -1,9 +1,24 @@
-version: '3.8'
+version: '3'
 services:
-  mysqldb:
-    image: mysql
+  mariadb:
+    image: mariadb
     environment:
-      MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: fastify_test
+      - MYSQL_ROOT_PASSWORD=moodle
+      - MYSQL_ROOT_USER=root
+      - MYSQL_DATABASE=moodle
+  moodle:
+    image: bitnami/moodle:latest
     ports:
-      - "3306:3306"
+      - 8080:8080
+      - 8443:8443
+    environment:
+      - MOODLE_DATABASE_HOST=mariadb
+      - MOODLE_DATABASE_USER=root
+      - MOODLE_DATABASE_PASSWORD=moodle
+      - MOODLE_DATABASE_NAME=moodle
+      - MOODLE_USERNAME=moises
+      - MOODLE_PASSWORD=moises
+    depends_on:
+      - mariadb
+    links:
+      - mariadb:mariadb

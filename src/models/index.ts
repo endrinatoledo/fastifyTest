@@ -41,6 +41,6 @@ Object.keys(db).forEach((modelName) => {
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-db.PokemonModel = require('./pokemon.model.ts')(sequelize, DataTypes)
+//db.PokemonModel = require('./pokemon.model.ts')(sequelize, DataTypes)
 
 export default db;

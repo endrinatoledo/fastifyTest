@@ -1,3 +1,3 @@
-import pokemonRouter from "./pokemon.route";
+import usersRouter from "./user.route";
 
-export { pokemonRouter };
+export { usersRouter };

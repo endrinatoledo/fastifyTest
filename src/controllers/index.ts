@@ -1,3 +1,2 @@
-import pokemonController from "./pokemon.controller";
-
-export { pokemonController };
+import  usersController  from "./user.controller";
+export { usersController  };

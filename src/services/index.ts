@@ -1,2 +1,2 @@
-import pokemonService from "./pokemon.service";
-export { pokemonService };
+import userService from "./user.service";
+export { userService };
