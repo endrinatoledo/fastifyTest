@@ -14,6 +14,7 @@ export const handleGetUsers = async (criteria: SearchCriteria[]) => {
 }
 
 export const handleCreateUser = async (usersData:any): Promise<any> => {
+    
     const params = {
         usersData
     }
@@ -23,9 +24,33 @@ export const handleCreateUser = async (usersData:any): Promise<any> => {
 
     return result;
 }
+
+export const handleUpdateUser = async (usersData: any): Promise<any> => {
+
+    const params = {
+        usersData
+    }
+    const result: any = await client("core_user_update_users", params);
+    if (result.exception) throw new Error(result.message);
+
+    return result;
+}
+
+export const handleDeleteUser = async (userIds: any): Promise<any> => {
+
+    const params = {
+        userIds :userIds.userids
+    }
+    const result: any = await client("core_user_delete_users", params);
+    if (result?.exception) throw new Error(result.message);
+
+    return result;
+}
 export default {
     handleGetUsers,
-    handleCreateUser
+    handleCreateUser,
+    handleUpdateUser,
+    handleDeleteUser
 };
 
 

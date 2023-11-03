@@ -8,14 +8,15 @@ const baseURL = `${process.env.MOODLE_BASE_URL}/webservice/rest/server.php`;
 const token = process.env.MOODLE_TOKEN;
 
 const client = async (functionName: string, params:any) =>{
-    
-    const searchParams:any = {
+
+    let searchParams:any = {
         wstoken: token,
         moodlewsrestformat: 'json',
         wsfunction: functionName,
     };
     if (params.usersData) searchParams.users = params.usersData.users;
     if (params.criteria) searchParams.criteria = params.criteria
+    if (params.userIds) searchParams.userids = params.userIds 
 
     const url = `${baseURL}?${qs.stringify(searchParams)}`;
 
